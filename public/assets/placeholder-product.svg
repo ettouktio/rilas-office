@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" fill="none">
+  <rect width="900" height="900" fill="#0A0A0A"/>
+  <rect x="110" y="110" width="680" height="680" rx="36" fill="#121212" stroke="#22DD22" stroke-width="8"/>
+  <rect x="210" y="240" width="480" height="320" rx="24" fill="#181818"/>
+  <path d="M270 520L380 390L470 470L560 360L630 520H270Z" fill="#22DD22" fill-opacity="0.4"/>
+  <circle cx="345" cy="320" r="44" fill="#22DD22" fill-opacity="0.55"/>
+    <text x="450" y="690" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="48" font-weight="700" text-anchor="middle">RILAS Office</text>
+  <text x="450" y="760" fill="#B9B9B9" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Product image coming soon</text>
+</svg>
