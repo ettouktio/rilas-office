@@ -12,7 +12,7 @@
             document.documentElement.dataset.theme = storedTheme || preferredTheme;
         })();
     </script>
-    <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <div class="site-shell">
