@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // 🔥 Force HTTPS in production (important for Railway)
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+
+        // 🌐 Share global view data
         View::composer('*', function ($view): void {
+
             $navigationCategories = collect();
 
             try {
@@ -37,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
                         ->orderBy('name')
                         ->get();
                 }
-            } catch (\Throwable) {
+            } catch (\Throwable $e) {
                 $navigationCategories = collect();
             }
 
@@ -45,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with([
                 'navigationCategories' => $navigationCategories,
-                'cartItemCount' => array_sum($cartItems),
+                'cartItemCount' => is_array($cartItems) ? array_sum($cartItems) : 0,
                 'supportedLocales' => config('rilas.supported_locales', []),
                 'featuredCities' => config('rilas.featured_cities', []),
             ]);
