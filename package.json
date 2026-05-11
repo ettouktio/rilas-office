@@ -1,9 +1,7 @@
 {
     "private": true,
     "type": "module",
-    "scripts": {
-        "build": "vite build",
-        "dev": "vite"
+    "scripts": {\
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
