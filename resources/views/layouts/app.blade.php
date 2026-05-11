@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ __('ui.meta.description') }}">
     <title>@yield('title', config('app.name', 'RILAS Office'))</title>
+    <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
     <script>
         (() => {
             const storedTheme = localStorage.getItem('rilas-theme');
@@ -12,9 +13,7 @@
             document.documentElement.dataset.theme = storedTheme || preferredTheme;
         })();
     </script>
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 </head>
 <body>
     <div class="site-shell">
