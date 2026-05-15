@@ -45,10 +45,10 @@ class OrderItem extends Model
                 return $this->product_image;
             }
 
-            return asset(ltrim($this->product_image, '/'));
+            return '/'.ltrim($this->product_image, '/');
         }
 
-        return $this->product?->image_url ?? asset('assets/placeholder-product.svg');
+        return $this->product?->image_url ?? '/assets/placeholder-product.svg';
     }
 
     public function getDisplayProductNameAttribute(): string

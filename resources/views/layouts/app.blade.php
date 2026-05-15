@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ __('ui.meta.description') }}">
     <title>@yield('title', config('app.name', 'RILAS Office'))</title>
-    <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
+    <link rel="stylesheet" href="/assets/app.css?v={{ filemtime(public_path('assets/app.css')) }}">
     <script>
         (() => {
             const storedTheme = localStorage.getItem('rilas-theme');

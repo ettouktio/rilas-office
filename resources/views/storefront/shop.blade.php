@@ -69,7 +69,7 @@
                                             @endif
                                         </div>
                                         <h3><a href="{{ route('products.show', $product) }}">{{ $product->localized_name }}</a></h3>
-                                        <p class="muted">{{ \Illuminate\Support\Str::limit($product->localized_description, 100) }}</p>
+                                        <p class="product-card-description">{{ \Illuminate\Support\Str::limit($product->localized_description, 100) }}</p>
                                         <div class="price-row">
                                             <span class="price">{{ number_format((float) $product->price, 2, ',', ' ') }} Dhs</span>
                                             <form action="{{ route('cart.store', $product) }}" method="POST">

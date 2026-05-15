@@ -110,6 +110,6 @@ class Category extends Model
     {
         $assetPath = config("rilas.category_visuals.{$this->slug}", 'assets/categories/default.svg');
 
-        return asset($assetPath);
+        return '/'.ltrim($assetPath, '/');
     }
 }

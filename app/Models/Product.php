@@ -57,14 +57,14 @@ class Product extends Model
     public function getImageUrlAttribute(): string
     {
         if (! $this->image) {
-            return asset('assets/placeholder-product.svg');
+            return '/assets/placeholder-product.svg';
         }
 
         if (str_starts_with($this->image, 'http://') || str_starts_with($this->image, 'https://')) {
             return $this->image;
         }
 
-        return asset(ltrim($this->image, '/'));
+        return '/'.ltrim($this->image, '/');
     }
 
     public function getCategoryTrailAttribute(): string

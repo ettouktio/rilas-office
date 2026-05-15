@@ -7,7 +7,8 @@
         <div class="container hero">
             <div class="hero-copy">
                 <span class="eyebrow">{{ __('ui.home.eyebrow') }}</span>
-                <h1>{{ __('ui.home.headline') }}</h1>
+                <h1 class="sr-only">{{ config('app.name', 'RILAS Office') }}</h1>
+                <h2 class="hero-title">{{ __('ui.home.headline') }}</h2>
                 <p>{{ __('ui.home.description') }}</p>
                 <div class="hero-actions">
                     <a href="{{ route('shop') }}" class="btn btn-primary">{{ __('ui.common.browse_products') }}</a>
@@ -26,7 +27,7 @@
             </div>
 
             <div class="hero-visual">
-                <img src="{{ asset('assets/hero-rilas-morocco.svg') }}" alt="{{ config('app.name', 'RILAS Office') }} Morocco office catalog">
+                <img src="/assets/hero-rilas-morocco.svg" alt="{{ config('app.name', 'RILAS Office') }} Morocco office catalog">
             </div>
         </div>
     </section>
@@ -103,7 +104,7 @@
                         <div class="product-card-body">
                             <span class="muted">{{ $product->category_trail }}</span>
                             <h3><a href="{{ route('products.show', $product) }}">{{ $product->localized_name }}</a></h3>
-                            <p class="muted">{{ \Illuminate\Support\Str::limit($product->localized_description, 88) }}</p>
+                            <p class="product-card-description">{{ \Illuminate\Support\Str::limit($product->localized_description, 88) }}</p>
                             <div class="price-row">
                                 <span class="price">{{ number_format((float) $product->price, 2, ',', ' ') }} Dhs</span>
                                 <form action="{{ route('cart.store', $product) }}" method="POST">
