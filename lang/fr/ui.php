@@ -15,6 +15,7 @@ return [
         'logout' => 'Déconnexion',
         'admin' => 'Admin',
         'menu' => 'Menu',
+        'close_menu' => 'Fermer le menu',
         'seed_notice' => 'Les catégories apparaîtront après le seeding.',
     ],
     'preferences' => [
@@ -159,6 +160,8 @@ return [
         'remember' => 'Se souvenir de moi',
         'sort_order' => 'Ordre d’affichage',
         'parent_category' => 'Catégorie parente',
+        'name_ar' => 'Nom en arabe',
+        'description_ar' => 'Description en arabe',
         'top_level_category' => 'Catégorie de premier niveau',
         'choose_child_category' => 'Choisir une sous-catégorie',
         'featured_product' => 'Produit mis en avant',

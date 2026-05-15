@@ -6,6 +6,11 @@
 </div>
 
 <div class="field">
+    <label for="name_ar">{{ __('ui.fields.name_ar') }}</label>
+    <input id="name_ar" type="text" name="name_ar" value="{{ old('name_ar', $category->name_ar) }}" dir="rtl">
+</div>
+
+<div class="field">
     <label for="parent_id">{{ __('ui.fields.parent_category') }}</label>
     <select id="parent_id" name="parent_id">
         <option value="">{{ __('ui.fields.top_level_category') }}</option>
@@ -23,6 +28,11 @@
 <div class="field">
     <label for="description">{{ __('ui.common.description') }}</label>
     <textarea id="description" name="description">{{ old('description', $category->description) }}</textarea>
+</div>
+
+<div class="field">
+    <label for="description_ar">{{ __('ui.fields.description_ar') }}</label>
+    <textarea id="description_ar" name="description_ar" dir="rtl">{{ old('description_ar', $category->description_ar) }}</textarea>
 </div>
 
 <div class="checkbox-row">

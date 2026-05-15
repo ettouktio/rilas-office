@@ -12,7 +12,7 @@
             <div class="detail-copy panel" style="padding: 1.5rem;">
                 <span class="eyebrow">{{ $product->category_trail }}</span>
                 <h1>{{ $product->localized_name }}</h1>
-                <p class="muted">{{ $product->localized_description }}</p>
+                <p class="product-description-text">{{ $product->localized_description }}</p>
 
                 <div class="split-actions" style="margin: 1.2rem 0;">
                     <span class="price">{{ number_format((float) $product->price, 2, ',', ' ') }} Dhs</span>

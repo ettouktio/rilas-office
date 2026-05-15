@@ -104,7 +104,12 @@ class CategoryController extends Controller
             }
         }
 
-        $validated['slug'] = $this->uniqueSlug($validated['name'], $category);
+        if (! $category?->exists) {
+            $validated['slug'] = $this->uniqueSlug($validated['name']);
+        }
+
+        $validated['name_ar'] = $validated['name_ar'] ?? null;
+        $validated['description_ar'] = $validated['description_ar'] ?? null;
         $validated['sort_order'] = (int) ($validated['sort_order'] ?? 0);
         $validated['parent_id'] = $parentId;
         $validated['is_active'] = $request->boolean('is_active');

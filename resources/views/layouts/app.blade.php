@@ -34,6 +34,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const toggle = document.getElementById('mobile-nav-toggle');
             const nav = document.getElementById('primary-nav');
+            const navScrim = document.getElementById('nav-scrim');
             const themeToggle = document.getElementById('theme-toggle');
             const themeLabel = document.getElementById('theme-toggle-label');
             const root = document.documentElement;
@@ -49,9 +50,28 @@
                     : themeToggle.dataset.darkLabel;
             };
 
+            const setMobileNav = (isOpen) => {
+                if (!toggle || !nav) {
+                    return;
+                }
+
+                nav.classList.toggle('open', isOpen);
+                navScrim?.classList.toggle('open', isOpen);
+                document.body.classList.toggle('nav-open', isOpen);
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            };
+
             if (toggle && nav) {
-                toggle.addEventListener('click', () => {
-                    nav.classList.toggle('open');
+                toggle.addEventListener('click', () => setMobileNav(!nav.classList.contains('open')));
+                navScrim?.addEventListener('click', () => setMobileNav(false));
+                nav.querySelectorAll('a').forEach((link) => {
+                    link.addEventListener('click', () => setMobileNav(false));
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        setMobileNav(false);
+                    }
                 });
             }
 

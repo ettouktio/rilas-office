@@ -16,8 +16,10 @@ class Category extends Model
     protected $fillable = [
         'parent_id',
         'name',
+        'name_ar',
         'slug',
         'description',
+        'description_ar',
         'sort_order',
         'is_active',
     ];
@@ -86,12 +88,20 @@ class Category extends Model
     {
         $key = "catalog.categories.{$this->slug}.name";
 
+        if (app()->isLocale('ar') && filled($this->name_ar)) {
+            return (string) $this->name_ar;
+        }
+
         return Lang::has($key) ? (string) __($key) : $this->name;
     }
 
     public function getLocalizedDescriptionAttribute(): string
     {
         $key = "catalog.categories.{$this->slug}.description";
+
+        if (app()->isLocale('ar') && filled($this->description_ar)) {
+            return (string) $this->description_ar;
+        }
 
         return Lang::has($key) ? (string) __($key) : (string) $this->description;
     }

@@ -15,6 +15,7 @@ return [
         'logout' => 'تسجيل الخروج',
         'admin' => 'الإدارة',
         'menu' => 'القائمة',
+        'close_menu' => 'إغلاق القائمة',
         'seed_notice' => 'ستظهر الفئات بعد تشغيل البيانات التجريبية.',
     ],
     'preferences' => [
@@ -159,6 +160,8 @@ return [
         'remember' => 'تذكرني',
         'sort_order' => 'ترتيب العرض',
         'parent_category' => 'الفئة الرئيسية',
+        'name_ar' => 'الاسم بالعربية',
+        'description_ar' => 'الوصف بالعربية',
         'top_level_category' => 'فئة من المستوى الأول',
         'choose_child_category' => 'اختر فئة فرعية',
         'featured_product' => 'منتج مميز',

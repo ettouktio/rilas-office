@@ -2,7 +2,7 @@
     <div class="container header-inner">
         <a href="{{ route('home') }}" class="brand">{{ config('app.name', 'RILAS Office') }}</a>
 
-        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle">{{ __('ui.nav.menu') }}</button>
+        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false">{{ __('ui.nav.menu') }}</button>
 
         <nav class="primary-nav" id="primary-nav">
             <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">{{ __('ui.nav.home') }}</a>
@@ -28,6 +28,8 @@
                 </div>
             </details>
         </nav>
+
+        <button type="button" class="nav-scrim" id="nav-scrim" aria-label="{{ __('ui.nav.close_menu') }}"></button>
 
         <div class="header-actions">
             <div class="preference-group" aria-label="{{ __('ui.preferences.language') }}">
