@@ -134,11 +134,28 @@ textarea {
 }
 
 .brand {
-    font-size: var(--font-brand);
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1.05;
-    max-width: 10ch;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.brand-logo {
+    width: 124px;
+    height: 58px;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+.theme-logo-light {
+    display: none;
+}
+
+html[data-theme="light"] .theme-logo-dark {
+    display: none;
+}
+
+html[data-theme="light"] .theme-logo-light {
+    display: block;
 }
 
 .primary-nav {
@@ -383,8 +400,9 @@ body.nav-open {
 }
 
 .hero-title {
-    font-size: clamp(1.85rem, 3.35vw, var(--font-hero-title));
-    max-width: 13.5ch;
+    font-size: clamp(2rem, 3vw, 2.85rem);
+    max-width: 20ch;
+    line-height: 1.12;
     text-wrap: balance;
 }
 
@@ -910,6 +928,13 @@ th {
     flex-wrap: wrap;
 }
 
+.footer-logo {
+    width: 138px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
 [dir="rtl"] .header-inner,
 [dir="rtl"] .footer-inner,
 [dir="rtl"] .toolbar,
@@ -993,30 +1018,36 @@ th {
 
     .header-inner {
         min-height: auto;
-        padding: 0.65rem 4.6rem 0.65rem 0;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 0.65rem 0;
         gap: 0.55rem;
         position: relative;
     }
 
     [dir="rtl"] .header-inner {
-        padding: 0.65rem 0 0.65rem 4.6rem;
+        padding: 0.65rem 0;
     }
 
     .brand {
         max-width: none;
-        flex: 1 1 auto;
+        flex: 0 0 auto;
+    }
+
+    .brand-logo {
+        width: 108px;
+        height: 50px;
     }
 
     .mobile-nav-toggle {
         display: inline-flex;
         order: 2;
-        position: absolute;
-        top: 0.65rem;
-        right: 0;
+        position: static;
+        justify-self: end;
         z-index: 140;
         min-height: 2.4rem;
         padding: 0.55rem 0.75rem;
+        background: var(--panel);
     }
 
     .primary-nav {
@@ -1071,6 +1102,7 @@ th {
 
     .header-actions {
         display: flex;
+        grid-column: 1 / -1;
         order: 3;
         width: 100%;
         max-width: 100%;
@@ -1135,7 +1167,7 @@ th {
     }
 
     [dir="rtl"] .mobile-nav-toggle {
-        left: 0;
+        left: 0.75rem;
         right: auto;
     }
 
@@ -1264,7 +1296,12 @@ th {
     }
 
     .brand {
-        font-size: 0.95rem;
+        max-width: 8.5rem;
+    }
+
+    .brand-logo {
+        width: 96px;
+        height: 45px;
     }
 
     .theme-toggle,

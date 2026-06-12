@@ -1,6 +1,9 @@
 <header class="site-header">
     <div class="container header-inner">
-        <a href="{{ route('home') }}" class="brand">{{ config('app.name', 'RILAS Office') }}</a>
+        <a href="{{ route('home') }}" class="brand" aria-label="{{ config('app.name', 'RILAS Office') }}">
+            <img src="/assets/rilas-office-logo-dark.png" alt="{{ config('app.name', 'RILAS Office') }}" class="brand-logo theme-logo theme-logo-dark">
+            <img src="/assets/rilas-office-logo-light.png" alt="{{ config('app.name', 'RILAS Office') }}" class="brand-logo theme-logo theme-logo-light">
+        </a>
 
         <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false">{{ __('ui.nav.menu') }}</button>
 

@@ -1,7 +1,8 @@
 <footer class="site-footer">
     <div class="container footer-inner">
         <div>
-            <strong>{{ config('app.name', 'RILAS Office') }}</strong>
+            <img src="/assets/rilas-office-logo-dark.png" alt="{{ config('app.name', 'RILAS Office') }}" class="footer-logo theme-logo theme-logo-dark">
+            <img src="/assets/rilas-office-logo-light.png" alt="{{ config('app.name', 'RILAS Office') }}" class="footer-logo theme-logo theme-logo-light">
             <p class="muted">{{ __('ui.footer.tagline') }}</p>
         </div>
 
