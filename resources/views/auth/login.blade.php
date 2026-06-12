@@ -12,11 +12,11 @@
                 @csrf
                 <div class="field">
                     <label for="email">{{ __('ui.fields.email') }}</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
                 </div>
                 <div class="field">
                     <label for="password">{{ __('ui.fields.password') }}</label>
-                    <input id="password" type="password" name="password" required>
+                    <input id="password" type="password" name="password" required autocomplete="current-password">
                 </div>
                 <div class="checkbox-row">
                     <input id="remember" type="checkbox" name="remember" value="1" @checked(old('remember'))>

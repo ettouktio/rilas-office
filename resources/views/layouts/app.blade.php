@@ -2,8 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}" data-theme="dark">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="{{ __('ui.meta.description') }}">
+    <meta name="theme-color" content="#0a0b0c" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
     <title>@yield('title', config('app.name', 'RILAS Office'))</title>
     <link rel="icon" type="image/png" href="/assets/rilas-office-logo-dark.png">
     <link rel="stylesheet" href="/assets/app.css?v={{ filemtime(public_path('assets/app.css')) }}">
@@ -14,7 +16,6 @@
             document.documentElement.dataset.theme = storedTheme || preferredTheme;
         })();
     </script>
-    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 </head>
 <body>
     <div class="site-shell">

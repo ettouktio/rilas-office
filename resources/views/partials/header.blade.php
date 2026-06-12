@@ -5,7 +5,7 @@
             <img src="/assets/rilas-office-logo-light.png" alt="{{ config('app.name', 'RILAS Office') }}" class="brand-logo theme-logo theme-logo-light">
         </a>
 
-        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false">{{ __('ui.nav.menu') }}</button>
+        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false"></button>
 
         <nav class="primary-nav" id="primary-nav">
             <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">{{ __('ui.nav.home') }}</a>

@@ -47,7 +47,7 @@
                                             <form action="{{ route('cart.update', $item['product']) }}" method="POST" class="split-actions">
                                                 @csrf
                                                 @method('PATCH')
-                                                <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="0" max="{{ $item['product']->quantity }}" style="width: 84px;">
+                                                <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="0" max="{{ $item['product']->quantity }}" style="width: 80px;">
                                                 <button type="submit" class="btn btn-ghost">{{ __('ui.cart.update') }}</button>
                                             </form>
                                         </td>
@@ -75,7 +75,7 @@
                             <span>{{ __('ui.common.total') }}</span>
                             <span>{{ number_format($subtotal, 2, ',', ' ') }} Dhs</span>
                         </div>
-                        <div class="summary-actions" style="margin-top: 1rem;">
+                        <div class="summary-actions" style="margin-top: 0.75rem;">
                             <a href="{{ route('checkout.create') }}" class="btn btn-primary btn-block">{{ __('ui.cart.proceed') }}</a>
                             <a href="{{ route('shop') }}" class="btn btn-ghost btn-block">{{ __('ui.cart.continue') }}</a>
                         </div>

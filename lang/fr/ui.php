@@ -226,6 +226,7 @@ return [
     ],
     'footer' => [
         'tagline' => 'Commerce professionnel de fournitures de bureau construit avec Laravel et pensé pour le Maroc.',
+        'rights' => 'Tous droits réservés.',
     ],
     'flash' => [
         'welcome_back' => 'Bon retour.',
