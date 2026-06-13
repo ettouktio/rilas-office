@@ -5,7 +5,7 @@
 @section('content')
     <section class="section">
         <div class="container checkout-layout">
-            <div class="panel" style="padding: 1.5rem;">
+            <div class="panel" style="padding: 1.25rem;">
                 <h1 class="page-title">{{ __('ui.checkout.page_title') }}</h1>
                 <p class="section-subtitle">{{ __('ui.checkout.subtitle') }}</p>
 

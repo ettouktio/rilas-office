@@ -20,49 +20,81 @@
                 </div>
             @else
                 <div class="cart-layout">
-                    <div class="table-panel">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>{{ __('ui.common.product') }}</th>
-                                    <th>{{ __('ui.common.quantity') }}</th>
-                                    <th>{{ __('ui.cart.line_total') }}</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($cartItems as $item)
+                    <div>
+                        {{-- Desktop table --}}
+                        <div class="table-panel cart-desktop-table">
+                            <table>
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <div class="line-item">
-                                                <img src="{{ $item['product']->image_url }}" alt="{{ $item['product']->localized_name }}">
-                                                <div>
-                                                    <strong>{{ $item['product']->localized_name }}</strong>
-                                                    <div class="muted">{{ $item['product']->category_trail }}</div>
-                                                    <div class="muted">{{ number_format((float) $item['product']->price, 2, ',', ' ') }} Dhs / {{ __('ui.cart.unit') }}</div>
+                                        <th>{{ __('ui.common.product') }}</th>
+                                        <th>{{ __('ui.common.quantity') }}</th>
+                                        <th>{{ __('ui.cart.line_total') }}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($cartItems as $item)
+                                        <tr>
+                                            <td>
+                                                <div class="line-item">
+                                                    <img src="{{ $item['product']->image_url }}" alt="{{ $item['product']->localized_name }}">
+                                                    <div>
+                                                        <strong>{{ $item['product']->localized_name }}</strong>
+                                                        <div class="muted">{{ $item['product']->category_trail }}</div>
+                                                        <div class="muted">{{ number_format((float) $item['product']->price, 2, ',', ' ') }} Dhs / {{ __('ui.cart.unit') }}</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('cart.update', $item['product']) }}" method="POST" class="split-actions">
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('cart.update', $item['product']) }}" method="POST" class="split-actions">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="0" max="{{ $item['product']->quantity }}">
+                                                    <button type="submit" class="btn btn-ghost">{{ __('ui.cart.update') }}</button>
+                                                </form>
+                                            </td>
+                                            <td class="price">{{ number_format($item['line_total'], 2, ',', ' ') }} Dhs</td>
+                                            <td>
+                                                <form action="{{ route('cart.destroy', $item['product']) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-ghost">{{ __('ui.cart.remove') }}</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {{-- Mobile cards --}}
+                        <div class="cart-items-list cart-mobile-cards">
+                            @foreach ($cartItems as $item)
+                                <div class="cart-item-card">
+                                    <img src="{{ $item['product']->image_url }}" alt="{{ $item['product']->localized_name }}">
+                                    <div class="cart-item-info">
+                                        <span class="cart-item-name">{{ $item['product']->localized_name }}</span>
+                                        <span class="cart-item-category">{{ $item['product']->category_trail }}</span>
+                                        <span class="cart-item-price">{{ number_format($item['line_total'], 2, ',', ' ') }} Dhs</span>
+                                        <div class="cart-item-controls">
+                                            <form action="{{ route('cart.update', $item['product']) }}" method="POST" style="display:contents;">
                                                 @csrf
                                                 @method('PATCH')
-                                                <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="0" max="{{ $item['product']->quantity }}" style="width: 80px;">
+                                                <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="0" max="{{ $item['product']->quantity }}">
                                                 <button type="submit" class="btn btn-ghost">{{ __('ui.cart.update') }}</button>
                                             </form>
-                                        </td>
-                                        <td class="price">{{ number_format($item['line_total'], 2, ',', ' ') }} Dhs</td>
-                                        <td>
+                                        </div>
+                                        <div class="cart-item-actions">
                                             <form action="{{ route('cart.destroy', $item['product']) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-ghost">{{ __('ui.cart.remove') }}</button>
                                             </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
 
                     <aside class="summary-card">
@@ -75,7 +107,7 @@
                             <span>{{ __('ui.common.total') }}</span>
                             <span>{{ number_format($subtotal, 2, ',', ' ') }} Dhs</span>
                         </div>
-                        <div class="summary-actions" style="margin-top: 0.75rem;">
+                        <div class="summary-actions" style="margin-top: 0.625rem;">
                             <a href="{{ route('checkout.create') }}" class="btn btn-primary btn-block">{{ __('ui.cart.proceed') }}</a>
                             <a href="{{ route('shop') }}" class="btn btn-ghost btn-block">{{ __('ui.cart.continue') }}</a>
                         </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="{{ __('ui.meta.description') }}">
     <meta name="theme-color" content="#0a0b0c" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)">
     <title>@yield('title', config('app.name', 'RILAS Office'))</title>
     <link rel="icon" type="image/png" href="/assets/rilas-office-logo-dark.png">
     <link rel="stylesheet" href="/assets/app.css?v={{ filemtime(public_path('assets/app.css')) }}">
@@ -42,10 +42,7 @@
             const root = document.documentElement;
 
             const applyThemeLabel = (theme) => {
-                if (!themeToggle || !themeLabel) {
-                    return;
-                }
-
+                if (!themeToggle || !themeLabel) return;
                 const nextTheme = theme === 'dark' ? 'light' : 'dark';
                 themeLabel.textContent = nextTheme === 'light'
                     ? themeToggle.dataset.lightLabel
@@ -53,10 +50,7 @@
             };
 
             const setMobileNav = (isOpen) => {
-                if (!toggle || !nav) {
-                    return;
-                }
-
+                if (!toggle || !nav) return;
                 nav.classList.toggle('open', isOpen);
                 navScrim?.classList.toggle('open', isOpen);
                 document.body.classList.toggle('nav-open', isOpen);
@@ -69,11 +63,8 @@
                 nav.querySelectorAll('a').forEach((link) => {
                     link.addEventListener('click', () => setMobileNav(false));
                 });
-
-                document.addEventListener('keydown', (event) => {
-                    if (event.key === 'Escape') {
-                        setMobileNav(false);
-                    }
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') setMobileNav(false);
                 });
             }
 
@@ -81,12 +72,11 @@
 
             if (themeToggle) {
                 themeToggle.addEventListener('click', () => {
-                    const currentTheme = root.dataset.theme === 'light' ? 'light' : 'dark';
-                    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-                    root.dataset.theme = nextTheme;
-                    localStorage.setItem('rilas-theme', nextTheme);
-                    applyThemeLabel(nextTheme);
+                    const current = root.dataset.theme === 'light' ? 'light' : 'dark';
+                    const next = current === 'dark' ? 'light' : 'dark';
+                    root.dataset.theme = next;
+                    localStorage.setItem('rilas-theme', next);
+                    applyThemeLabel(next);
                 });
             }
         });

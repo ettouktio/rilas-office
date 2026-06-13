@@ -9,12 +9,12 @@
                 <img src="{{ $product->image_url }}" alt="{{ $product->localized_name }}" class="detail-image">
             </div>
 
-            <div class="detail-copy panel" style="padding: 1.5rem;">
+            <div class="detail-copy panel" style="padding: 1.25rem;">
                 <span class="eyebrow">{{ $product->category_trail }}</span>
                 <h1>{{ $product->localized_name }}</h1>
                 <p class="product-description-text">{{ $product->localized_description }}</p>
 
-                <div class="split-actions" style="margin: 1.2rem 0;">
+                <div class="split-actions" style="margin: 1rem 0;">
                     <span class="price">{{ number_format((float) $product->price, 2, ',', ' ') }} Dhs</span>
                     @if ($product->quantity > 0)
                         <span class="badge">{{ __('ui.product.in_stock', ['count' => $product->quantity]) }}</span>

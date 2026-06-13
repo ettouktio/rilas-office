@@ -10,10 +10,18 @@
                     <h1 class="page-title">{{ __('ui.shop.page_title') }}</h1>
                     <p class="section-subtitle">{{ __('ui.shop.subtitle') }}</p>
                 </div>
+                <button type="button" class="btn btn-ghost shop-filter-toggle" id="shop-filter-toggle">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    {{ __('ui.shop.apply_filters') }}
+                </button>
             </div>
 
             <div class="shop-layout">
-                <aside class="sidebar panel">
+                <aside class="sidebar panel" id="shop-sidebar">
+                    <button type="button" class="shop-sidebar-close" id="shop-sidebar-close">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        {{ __('ui.common.cancel') }}
+                    </button>
                     <form action="{{ route('shop') }}" method="GET" class="filter-form">
                         <div class="field">
                             <label for="q">{{ __('ui.shop.search_label') }}</label>
@@ -38,7 +46,7 @@
                             <select id="sort" name="sort">
                                 <option value="latest" @selected($sort === 'latest')>{{ __('ui.shop.sort_latest') }}</option>
                                 <option value="price_asc" @selected($sort === 'price_asc')>{{ __('ui.shop.sort_price_asc') }}</option>
-                                <option value="price_desc" @selected($sort === 'price_desc')>{{ __('ui.shop.sort_price_desc') }}</option>
+                                <option value="price_desc" @selected($sort === 'price_desc')">{{ __('ui.shop.sort_price_desc') }}</option>
                                 <option value="name_asc" @selected($sort === 'name_asc')>{{ __('ui.shop.sort_name_asc') }}</option>
                             </select>
                         </div>
@@ -47,7 +55,7 @@
                     </form>
                 </aside>
 
-                <div>
+                <div class="shop-products">
                     @if ($selectedCategory)
                         <div class="alert">
                             {{ __('ui.shop.viewing') }} <strong>{{ $selectedCategory->breadcrumbName() }}</strong>
@@ -69,7 +77,6 @@
                                             @endif
                                         </div>
                                         <h3><a href="{{ route('products.show', $product) }}">{{ $product->localized_name }}</a></h3>
-                                        <p class="product-card-description">{{ \Illuminate\Support\Str::limit($product->localized_description, 100) }}</p>
                                         <div class="price-row">
                                             <span class="price">{{ number_format((float) $product->price, 2, ',', ' ') }} Dhs</span>
                                             <form action="{{ route('cart.store', $product) }}" method="POST">
@@ -93,4 +100,26 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('shop-filter-toggle');
+            const sidebar = document.getElementById('shop-sidebar');
+            const closeBtn = document.getElementById('shop-sidebar-close');
+
+            if (toggle && sidebar) {
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            if (closeBtn && sidebar) {
+                closeBtn.addEventListener('click', () => {
+                    sidebar.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
 @endsection
