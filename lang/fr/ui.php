@@ -17,6 +17,7 @@ return [
         'menu' => 'Menu',
         'close_menu' => 'Fermer le menu',
         'seed_notice' => 'Les catégories apparaîtront après le seeding.',
+        'account' => 'Compte',
     ],
     'preferences' => [
         'language' => 'Langue',
@@ -227,6 +228,7 @@ return [
     'footer' => [
         'tagline' => 'Commerce professionnel de fournitures de bureau construit avec Laravel et pensé pour le Maroc.',
         'rights' => 'Tous droits réservés.',
+        'morocco' => 'Fait au Maroc',
     ],
     'flash' => [
         'welcome_back' => 'Bon retour.',
