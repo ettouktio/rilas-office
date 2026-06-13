@@ -1219,12 +1219,36 @@ tr:hover td {
     font-size: var(--fs-xs);
     color: var(--text-secondary);
     font-weight: var(--fw-medium);
-    margin-top: 0.5rem;
 }
 
 .footer-morocco-flag {
     font-size: 1.1rem;
     line-height: 1;
+}
+
+.footer-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.footer-developer {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+}
+
+.footer-developer-label {
+    color: var(--muted);
+}
+
+.footer-developer-name {
+    color: var(--green);
+    font-weight: var(--fw-semibold);
 }
 
 .footer-bottom {

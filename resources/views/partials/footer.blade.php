@@ -5,9 +5,9 @@
                 <img src="/assets/rilas-office-logo-dark.png" alt="{{ config('app.name', 'RILAS Office') }}" class="footer-logo theme-logo theme-logo-dark">
                 <img src="/assets/rilas-office-logo-light.png" alt="{{ config('app.name', 'RILAS Office') }}" class="footer-logo theme-logo theme-logo-light">
                 <p class="muted">{{ __('ui.footer.tagline') }}</p>
-                <div class="footer-morocco">
-                    <span class="footer-morocco-flag" aria-hidden="true">&#127462;&#127466;</span>
-                    <span>{{ __('ui.footer.morocco') }}</span>
+                <div class="footer-developer">
+                    <span class="footer-developer-label">{{ __('ui.footer.developed_by') }}</span>
+                    <span class="footer-developer-name">Oussama Ettoukti</span>
                 </div>
             </div>
 
