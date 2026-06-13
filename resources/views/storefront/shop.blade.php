@@ -18,10 +18,6 @@
 
             <div class="shop-layout">
                 <aside class="sidebar panel" id="shop-sidebar">
-                    <button type="button" class="shop-sidebar-close" id="shop-sidebar-close">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        {{ __('ui.common.cancel') }}
-                    </button>
                     <form action="{{ route('shop') }}" method="GET" class="filter-form">
                         <div class="field">
                             <label for="q">{{ __('ui.shop.search_label') }}</label>
@@ -105,19 +101,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             const toggle = document.getElementById('shop-filter-toggle');
             const sidebar = document.getElementById('shop-sidebar');
-            const closeBtn = document.getElementById('shop-sidebar-close');
 
             if (toggle && sidebar) {
                 toggle.addEventListener('click', () => {
-                    sidebar.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-
-            if (closeBtn && sidebar) {
-                closeBtn.addEventListener('click', () => {
-                    sidebar.classList.remove('open');
-                    document.body.style.overflow = '';
+                    sidebar.classList.toggle('open');
+                    const isOpen = sidebar.classList.contains('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 });
             }
         });
